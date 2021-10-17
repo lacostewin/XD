@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" href="css.css">-->
+    <title>ТОП-10 фильмов</title>
+</head>
+<body>
+    <h3 style="margin-bottom: 23px;">Нажмите для сбора данных.</h3>
+    <div>
+        <form th:action="@{/collect}" method="get">
+            <input type="submit" value="Собрать">
+        </form>
+    </div>
+</br>
+<div class="content">
+    <h3 style="margin-bottom: 23px;">Выберете дату для отображения рейтинга ТОП-10</h3>
+    <div>
+        <form th:action="@{/}" method="post" onsubmit="return confirm('Верно указали дату?');">
+            <input type="date" id="fromdate" name="fromdate" data-date-format="DD-MM-YYYY"> - <input type="date" id="todate" name="todate" data-date-format="DD-MM-YYYY">
+            <input type="submit" value="Запросить">
+        </form>
+    </div>
+<table class="sortable">
+        <thead>
+        <tr>
+            <th>Позиция</th><th>Название фильма</th><th>Рейтинг</th><th>Количество голосов</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mess : ${messages}">
+                <td th:text="${mess.position}"><i></i></td>
+                <td th:text="${mess.name}"><span></span></td>
+                <td th:text="${mess.rating}"><i></i></td>
+                <td th:text="${mess.look}"><i></i></td>
+
+
+                <input type="hidden" name="name" th:value="${mess.name}"/>
+                <input type="hidden" name="rating" th:value="${mess.rating}"/>
+                <input type="hidden" name="look" th:value="${mess.look}"/>
+                <input type="hidden" name="position" th:value="${mess.position}"/>
+            </tr>
+        </tbody>
+</table>
+</div>
+</body>
+</html>
