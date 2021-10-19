@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CsrfFilter;
 
-// Доменная авторизация контроллером Spring и назначение прав достпа к страницам
 @Configuration
 @EnableAutoConfiguration
 @EnableWebSecurity
